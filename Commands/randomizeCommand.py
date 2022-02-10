@@ -22,4 +22,10 @@ class RandomCommands(commands.Cog):
 
     @commands.command(brief="Wybierz jedną z podanych opcji")
     async def pick_one(self,ctx, *args):
-        await ctx.send(args[randrange(0,len(args))])
+        n = randrange(0, len(args))
+        await ctx.send(args[n])
+
+    @commands.command(brief="Rzuca monetą")
+    async def coin_flip(self, ctx):
+        n = randrange(0,2)
+        await ctx.send("Orzeł" if n == 0 else "Reszka")
