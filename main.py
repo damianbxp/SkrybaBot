@@ -1,18 +1,6 @@
-from discord.ext import commands
+import skryba_bot as s
 from apikeys import *
-
-client = commands.Bot(command_prefix="!")
-
-
-@client.event
-async def on_ready():
-    print("Bot initialized")
-    print("---------------")
-
-
-@client.command()
-async def witam(ctx):
-    await ctx.send("Witam")
-
+client = s.Skryba()
 
 client.run(BOTTOKEN)
+
