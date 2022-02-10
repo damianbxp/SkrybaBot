@@ -1,6 +1,13 @@
+import random
 import skryba_bot as s
 from apikeys import *
-client = s.Skryba()
+import json
+from discord.ext import commands
 
-client.run(BOTTOKEN)
 
+
+bot = commands.Bot(command_prefix="!")
+
+bot.load_extension(f'Commands.quoteCommand')
+
+bot.run(BOTTOKEN)
