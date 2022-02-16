@@ -16,13 +16,43 @@ async def get_quote(quote_category=None, quote_id=None):
     with open(os.path.join(TEXT_QUOTES, "textquotes.json"), encoding="utf-8") as quotes_file:
         quotes = json.load(quotes_file)
 
-    if quote_category == None:
+    if quote_category is None:
+        print("Telling random category")
         quote_category = random.choice(list(quotes.keys()))
 
-    if quote_id == None or quote_id >= len(quotes[quote_category]):
-        quote_id = randrange(0, len(quotes[quote_category]))
+    try:
+        quote_category_id = int(quote_category)
+        print(f"Quote category id: {quote_category_id}")
+        quotes = list(quotes.values())
+        if quote_id is None:
+            print("Telling random quote")
+            quote_id = randrange(0, len(quotes[quote_category_id]))
+        else:
+            try:
+                quote_id = int(quote_id)
+            except ValueError:
+                return
+        if quote_id < 0 or quote_id >= len(quotes[quote_category_id]):
+            return
 
-    return quotes[quote_category][quote_id]
+        return quotes[quote_category_id][quote_id]
+
+
+    except ValueError:
+        print(f"Quote category: {quote_category}")
+        if quote_id is None:
+            print("Telling random quote")
+            quote_id = randrange(0, len(quotes[quote_category]))
+        else:
+            try:
+                quote_id = int(quote_id)
+            except ValueError:
+                return
+
+        if quote_id < 0 or quote_id >= len(quotes[quote_category]):
+            return
+
+        return quotes[quote_category][quote_id]
 
 
 class QuoteCommands(commands.Cog):
@@ -49,9 +79,19 @@ class QuoteCommands(commands.Cog):
                 await channel.connect()
 
             quote_file = await get_quote(category, quote_id)
+            if quote_file is None:
+                await ctx.send("Nie moge znaleść cytatu")
+                return
+
             quote_file = quote_file["audio"]
+            if quote_file is None:
+                await ctx.send("Nie mogę znaleść tego cytatu w zbiorach")
+                return
+
             if quote_file != "":
                 ctx.voice_client.play(FFmpegPCMAudio("data/audio_quotes/" + quote_file))
+            else:
+                await ctx.send("Nie mogę wypowiedzieć tego cytatu")
 
 
         else:
