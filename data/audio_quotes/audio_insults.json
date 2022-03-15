@@ -1,0 +1,34 @@
+[
+  {
+    "tag": "niewierny",
+    "audio": "ca_add_player_01.wav"
+  },
+  {
+    "tag": "postarajsie",
+    "audio": "ca_congrats_01.wav"
+  },
+  {
+    "tag": "uczsie",
+    "audio": "ca_siege_01.wav"
+  },
+  {
+    "tag": "plecy",
+    "audio": "ca_vict_02.wav"
+  },
+  {
+    "tag": "nozka",
+    "audio": "em_nervous_01.wav"
+  },
+  {
+    "tag": "wygrana",
+    "audio": "em_vict_04.wav"
+  },
+  {
+    "tag": "osoba",
+    "audio": "em_taunt_01.wav"
+  },
+  {
+    "tag": "komar",
+    "audio": "em_taunt_04.wav"
+  }
+]

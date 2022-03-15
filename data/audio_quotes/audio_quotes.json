@@ -1,0 +1,58 @@
+[
+  {
+    "tag": "tak",
+    "audio": "ca_willattack_01.wav"
+  },
+  {
+    "tag": "sztywni",
+    "audio": "Cross_ATKM3.wav"
+  },
+  {
+    "tag": "pozdrawiam",
+    "audio": "em_add_player_01.wav"
+  },
+  {
+    "tag": "cholera",
+    "audio": "em_anger_01.wav"
+  },
+  {
+    "tag": "decyzja",
+    "audio": "Engineer_ATKS1.wav"
+  },
+  {
+    "tag": "inz",
+    "audio": "Engineer_Equip4.wav"
+  },
+  {
+    "tag": "inzout",
+    "audio": "Engineer_Exit1.wav"
+  },
+  {
+    "tag": "krowa1",
+    "audio": "Engineer_Launchcow2.wav"
+  },
+  {
+    "tag": "krowa2",
+    "audio": "Engineer_Launchcow3.wav"
+  },
+  {
+    "tag": "krowa3",
+    "audio": "Engineer_Launchcow6.wav"
+  },
+  {
+    "tag": "inzin",
+    "audio": "Engineer_Manequip1.wav"
+  },
+  {
+    "tag": "olej",
+    "audio": "Engineer_Manoil1.wav"
+  },
+  {
+    "tag": "fosa",
+    "audio": "Engineer_Moat1.wav"
+  },
+  {
+    "tag": "katapulta",
+    "audio": "Engineer_Scatplt.wav"
+  }
+]

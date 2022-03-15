@@ -12,47 +12,46 @@ def setup(bot):
     bot.add_cog(QuoteCommands(bot))
 
 
-async def get_quote(quote_category=None, quote_id=None):
-    with open(os.path.join(TEXT_QUOTES, "textquotes.json"), encoding="utf-8") as quotes_file:
+async def get_quote(quote_id, source: str):
+    with open(os.path.join(source["dir"], source["file"]), encoding="utf-8") as quotes_file:
         quotes = json.load(quotes_file)
 
-    if quote_category is None:
-        print("Telling random category")
-        quote_category = random.choice(list(quotes.keys()))
-
     try:
-        quote_category_id = int(quote_category)
-        print(f"Quote category id: {quote_category_id}")
-        quotes = list(quotes.values())
-        if quote_id is None:
-            print("Telling random quote")
-            quote_id = randrange(0, len(quotes[quote_category_id]))
+        # get quote by id
+        quote_id = int(quote_id)
+        if 0 <= quote_id < len(quotes):
+            return quotes[quote_id]
         else:
-            try:
-                quote_id = int(quote_id)
-            except ValueError:
-                return
-        if quote_id < 0 or quote_id >= len(quotes[quote_category_id]):
             return
-
-        return quotes[quote_category_id][quote_id]
-
 
     except ValueError:
-        print(f"Quote category: {quote_category}")
-        if quote_id is None:
-            print("Telling random quote")
-            quote_id = randrange(0, len(quotes[quote_category]))
-        else:
-            try:
-                quote_id = int(quote_id)
-            except ValueError:
-                return
+        # get quote by tag
+        matched_quotes = [q for q in quotes if q["tag"] == quote_id]
+        return matched_quotes[0] if len(matched_quotes) > 0 else None
 
-        if quote_id < 0 or quote_id >= len(quotes[quote_category]):
+async def play_file(ctx, quote_id, quote_type):
+    if ctx.author.voice:
+        channel = ctx.message.author.voice.channel
+        if not ctx.voice_client:
+            await channel.connect()
+
+        quote_file = await get_quote(quote_id, QUOTE_TYPES[quote_type])
+
+        if quote_file is None:
+            await ctx.send("Nie mogę znaleść tego cytatu w zbiorach")
             return
 
-        return quotes[quote_category][quote_id]
+        quote_file = quote_file["audio"]
+
+        if quote_file != "":
+            ctx.voice_client.play(FFmpegPCMAudio("data/audio_quotes/" + quote_file))
+        else:
+            await ctx.send("Nie mogę wypowiedzieć tego cytatu")
+
+    else:
+        await ctx.send("Musisz być na kanale głosowym")
+
+
 
 
 class QuoteCommands(commands.Cog):
@@ -63,39 +62,24 @@ class QuoteCommands(commands.Cog):
     async def on_message(self, message):
         if message.author != self.bot.user:
             if message.content.lower().find("jak to jest być skrybą") != -1:
-                quote = await get_quote("other", 0)
+                quote = await get_quote(0, QUOTE_TYPES["skryba_text"])
                 await message.channel.send(quote["text"])
 
     @commands.command(brief="Zacytuj wskazany lub losowy cytat")
-    async def q(self, ctx, category=None, quote_id=None):
-        quote = await get_quote(category, quote_id)
-        await ctx.send(quote["text"])
+    async def q(self, ctx, quote_id=None):
+        quote = await get_quote(quote_id, QUOTE_TYPES["normal_text"])
+        if quote is not None:
+            await ctx.send(quote["text"])
+        else:
+            await ctx.send("Nie moge znaleść cytatu")
 
     @commands.command(brief="Zacytuj na głos. Muszisz być na kanale głosowym")
-    async def t(self, ctx, category=None, quote_id=None):
-        if ctx.author.voice:
-            channel = ctx.message.author.voice.channel
-            if not ctx.voice_client:
-                await channel.connect()
+    async def t(self, ctx, quote_id=None):
+        await play_file(ctx, quote_id, "normal_audio")
 
-            quote_file = await get_quote(category, quote_id)
-            if quote_file is None:
-                await ctx.send("Nie moge znaleść cytatu")
-                return
-
-            quote_file = quote_file["audio"]
-            if quote_file is None:
-                await ctx.send("Nie mogę znaleść tego cytatu w zbiorach")
-                return
-
-            if quote_file != "":
-                ctx.voice_client.play(FFmpegPCMAudio("data/audio_quotes/" + quote_file))
-            else:
-                await ctx.send("Nie mogę wypowiedzieć tego cytatu")
-
-
-        else:
-            await ctx.send("Musisz być na kanale głosowym")
+    @commands.command(brief="Obraź")
+    async def i(self, ctx, quote_id=None):
+        await play_file(ctx, quote_id, "insult_audio")
 
     @commands.command(brief="Opuść kanał głosowy")
     async def leave(self, ctx):
