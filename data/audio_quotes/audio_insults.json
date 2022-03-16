@@ -30,5 +30,77 @@
   {
     "tag": "komar",
     "audio": "em_taunt_04.wav"
+  },
+  {
+    "tag": "niedolega",
+    "audio": "Insult1.wav"
+  },
+  {
+    "tag": "hultaj",
+    "audio": "Insult2.wav"
+  },
+  {
+    "tag": "kiep",
+    "audio": "Insult3.wav"
+  },
+  {
+    "tag": "szelma",
+    "audio": "Insult4.wav"
+  },
+  {
+    "tag": "wiesniak",
+    "audio": "Insult5.wav"
+  },
+  {
+    "tag": "glupcze",
+    "audio": "Insult9.wav"
+  },
+  {
+    "tag": "galgan",
+    "audio": "Insult11.wav"
+  },
+  {
+    "tag": "pajac",
+    "audio": "Insult12.wav"
+  },
+  {
+    "tag": "leb",
+    "audio": "Insult13.wav"
+  },
+  {
+    "tag": "flejtuch",
+    "audio": "Insult14.wav"
+  },
+  {
+    "tag": "szubrawiec",
+    "audio": "Insult15.wav"
+  },
+  {
+    "tag": "tepoglow",
+    "audio": "Insult16.wav"
+  },
+  {
+    "tag": "oszolom",
+    "audio": "Insult17.wav"
+  },
+  {
+    "tag": "ramol",
+    "audio": "Insult18.wav"
+  },
+  {
+    "tag": "wypierdek",
+    "audio": "Insult19.wav"
+  },
+  {
+    "tag": "gogus",
+    "audio": "Insult20.wav"
+  },
+  {
+    "tag": "oddech",
+    "audio": "ni_anger_01.wav"
+  },
+  {
+    "tag": "kurczak",
+    "audio": "pg_taunt_06.wav"
   }
 ]

@@ -54,5 +54,109 @@
   {
     "tag": "katapulta",
     "audio": "Engineer_Scatplt.wav"
+  },
+  {
+    "tag": "drabina",
+    "audio": "Ladder_ATKS2.wav"
+  },
+  {
+    "tag": "namury",
+    "audio": "Ladder_Placeladder1.wav"
+  },
+  {
+    "tag": "sztywni",
+    "audio": "Mace_ATKW1.wav"
+  },
+  {
+    "tag": "woda",
+    "audio": "Mace_Moat2.wav"
+  },
+  {
+    "tag": "palkarze",
+    "audio": "Mace_s4.wav"
+  },
+  {
+    "tag": "kij",
+    "audio": "Monk_ATKW2.wav"
+  },
+  {
+    "tag": "powiadam",
+    "audio": "Monk_Moat2.wav"
+  },
+  {
+    "tag": "dziendobry",
+    "audio": "Peasant_Female1.wav"
+  },
+  {
+    "tag": "zgubieni",
+    "audio": "Peasant_Female95.wav"
+  },
+  {
+    "tag": "zajece",
+    "audio": "Peasant_Female104.wav"
+  },
+  {
+    "tag": "napika",
+    "audio": "Pike_ATKW3.wav"
+  },
+  {
+    "tag": "latanie",
+    "audio": "Pike_Ladder2.wav"
+  },
+  {
+    "tag": "grawitacja",
+    "audio": "Pike_Ladder3.wav"
+  },
+  {
+    "tag": "nogi",
+    "audio": "Pike_M5.wav"
+  },
+  {
+    "tag": "piki",
+    "audio": "Pike_S5.wav"
+  },
+  {
+    "tag": "krowy",
+    "audio": "Random_Events10.wav"
+  },
+  {
+    "tag": "blazen",
+    "audio": "Random_Events13.wav"
+  },
+  {
+    "tag": "drewno",
+    "audio": "Resource_Need1.wav"
+  },
+  {
+    "tag": "drabiny",
+    "audio": "Spear_Ladder2.wav"
+  },
+  {
+    "tag": "wziemie",
+    "audio": "Sword_ATKW2.wav"
+  },
+  {
+    "tag": "zartujesz",
+    "audio": "Sword_Moat2.wav"
+  },
+  {
+    "tag": "zdychanie",
+    "audio": "Tunnel_ATKS3.wav"
+  },
+  {
+    "tag": "nadol",
+    "audio": "Tunnel_Digtunnel1.wav"
+  },
+  {
+    "tag": "lupie",
+    "audio": "Tunnel_Moat2.wav"
+  },
+  {
+    "tag": "kopanie",
+    "audio": "Tunnel_Moat3.wav"
+  },
+  {
+    "tag": "klaustrofobia",
+    "audio": "Tunnel_s5.wav"
   }
 ]
